@@ -1,4 +1,5 @@
 #include "push_swap.h"
+
 static int	first(char const *s1, char const *s2)
 {
 	int	a;

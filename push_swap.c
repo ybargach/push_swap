@@ -15,7 +15,7 @@ int ft_strlent(char *str)
 	if (str[a - 1] == ' ')
 		b--;
     b++;
-    return b;
+    return (b);
 }
 
 void	check_all(char **av, int ac, int f)
@@ -32,7 +32,7 @@ void	check_all(char **av, int ac, int f)
 		afva = ft_split(av[a], ' ');
 		if (afva[0] == NULL)
 		{
-			printf("error");
+			write(1, "error\n", 6);
 			exit(0);
 		}
 		b = 0;
@@ -61,7 +61,7 @@ void	check_all(char **av, int ac, int f)
 	//sort_five(&A, &B);
 	//sortStack(&test);
 	//printf("stack ---- A -----\n");
-	put_array(&A,&B,f);
+	sort_five_hundred(&A,&B,f);
 	// printf("stack ---- A2 -----\n");
 	// while (A != NULL)
 	// {
@@ -105,5 +105,5 @@ int	main(int ac, char **av)
 		check_all(av, ac, a);
 	}
 	else
-		printf("error");
+		write(1, "error\n", 6);
 }
