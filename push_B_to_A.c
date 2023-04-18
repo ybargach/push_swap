@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_B_to_A.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 18:56:46 by ybargach          #+#    #+#             */
+/*   Updated: 2023/04/17 23:32:17 by ybargach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	max_number(stack **elem, stack **node, data arr)
+void	max_number(t_stack **elem, t_stack **node, t_data arr)
 {
 	arr.newnode = *node;
 	arr.high_number1 = -2147483649;
@@ -28,19 +40,23 @@ void	max_number(stack **elem, stack **node, data arr)
 	check_higher_lower(elem, node, arr);
 }
 
-void	check_higher_lower(stack **a, stack **b, data arr)
+void	check_higher_lower(t_stack **a, t_stack **b, t_data arr)
 {
-	if (arr.index_1 <= (arr.new_arr_size/2) && arr.index_2 <= (arr.new_arr_size/2))
+	if (arr.index_1 <= (arr.new_arr_size / 2)
+		&& arr.index_2 <= (arr.new_arr_size / 2))
 		lower_half(a, b, arr);
-	else if (arr.index_1 >= (arr.new_arr_size/2) && arr.index_2 >= (arr.new_arr_size/2))
+	else if (arr.index_1 >= (arr.new_arr_size / 2)
+		&& arr.index_2 >= (arr.new_arr_size / 2))
 		higher_half(a, b, arr);
-	else if (arr.index_1 >= (arr.new_arr_size/2) && arr.index_2 <= (arr.new_arr_size/2))
+	else if (arr.index_1 >= (arr.new_arr_size / 2)
+		&& arr.index_2 <= (arr.new_arr_size / 2))
 		top_number_in_higher(a, b, arr);
-	else if (arr.index_1 <= (arr.new_arr_size/2) && arr.index_2 >= (arr.new_arr_size/2))
+	else if (arr.index_1 <= (arr.new_arr_size / 2)
+		&& arr.index_2 >= (arr.new_arr_size / 2))
 		top_number_in_lower(a, b, arr);
 }
 
-void	top_number_in_lower(stack **a, stack **b, data arr)
+void	top_number_in_lower(t_stack **a, t_stack **b, t_data arr)
 {
 	arr.a = 0;
 	arr.b = 0;
@@ -69,7 +85,7 @@ void	top_number_in_lower(stack **a, stack **b, data arr)
 	}
 }
 
-void	top_number_in_higher(stack **a, stack **b, data arr)
+void	top_number_in_higher(t_stack **a, t_stack **b, t_data arr)
 {
 	arr.a = 0;
 	arr.b = 0;
@@ -98,7 +114,7 @@ void	top_number_in_higher(stack **a, stack **b, data arr)
 	}
 }
 
-void	higher_half(stack **a, stack **b, data arr)
+void	higher_half(t_stack **a, t_stack **b, t_data arr)
 {
 	arr.a = 0;
 	arr.b = 0;
@@ -118,27 +134,5 @@ void	higher_half(stack **a, stack **b, data arr)
 			(rrb(b), arr.a++);
 		push_b(b, a);
 		sa(a);
-	}
-}
-
-void	lower_half(stack **a, stack **b, data arr)
-{
-	arr.a = 0;
-	arr.b = 0;
-	if (arr.index_1 > arr.index_2)
-	{
-		while (arr.a < arr.index_2)
-			(rb(b), arr.b++, arr.a++);
-		push_b(b, a);
-		while (arr.a < (arr.index_1 - 1))
-			(rb(b), arr.a++);
-		push_b(b, a);
-		sa(a);
-	}
-	else if (arr.index_1 < arr.index_2)
-	{
-		while (arr.a < arr.index_1)
-			(rb(b), arr.a++);
-		push_b(b, a);
 	}
 }

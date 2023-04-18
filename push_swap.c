@@ -1,80 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 18:56:53 by ybargach          #+#    #+#             */
+/*   Updated: 2023/04/17 18:56:53 by ybargach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int ft_strlent(char *str)
+void	check_index(t_stack **A, t_stack **B, int index)
 {
-    int a = 0;
-    int b = 0;
-	if (str[0] == ' ')
-		b--;
-    while (str[a])
-    {
-        if(str[a] == ' ')
-            b++;
-        a++;
-    }
-	if (str[a - 1] == ' ')
-		b--;
-    b++;
-    return (b);
+	if (index > 1 && index <= 3)
+		sort_three(A);
+	else if (index > 3 && index <= 5)
+		sort_five(A, B, index);
+	else if (index > 5 && index <= 200)
+		sort_one_hundred(A, B, index);
+	else if (index > 200)
+		sort_five_hundred(A, B, index);
+}
+
+void	put_in_stack(int *number, int c, int f)
+{
+	t_stack	*a;
+	t_stack	*b;
+	int		g;
+
+	a = NULL;
+	b = NULL;
+	g = 0;
+	check_repeated(number, c);
+	while (g < c)
+	{
+		add_back(&a, number[g]);
+		g++;
+	}
+	check_index(&a, &b, c);
+	free_node(&a);
 }
 
 void	check_all(char **av, int ac, int f)
 {
-	int a = 1;
-	int b;
-	int c = 0;
-	char **afva;
-	long b_number;
-	int number[f];
-	while (a < ac)
-	{
-		ft_isdigit(av[a]);
-		afva = ft_split(av[a], ' ');
-		if (afva[0] == NULL)
-		{
-			write(1, "error\n", 6);
-			exit(0);
-		}
-		b = 0;
-		while (afva[b])
-		{
-			check_op(afva[b]);
-			b_number = ft_atoi(afva[b]);
-			number[c] = check_int(b_number);
-			c++;
-			b++;
-		}
-		a++;
-	}
-	//check_sort(number, f);
-	check_repeated(number, c);
-	stack	*A = NULL;
-	stack	*B = NULL;
-	int g = 0;
-	while (g < c)
-	{
-		add_back(&A, number[g]);
-		g++;
-	}
+	t_data	arr;
+	char	**afva;
+	long	b_number;
 
-	//sort_three(&A);
-	//sort_five(&A, &B);
-	//sortStack(&test);
-	//printf("stack ---- A -----\n");
-	sort_five_hundred(&A,&B,f);
-	// printf("stack ---- A2 -----\n");
-	// while (A != NULL)
-	// {
-	// 	printf("%d\n", A->x);
-	// 	A = A->next;
-	// }
-	// printf("stack ---- B -----\n");
-	// while (B != NULL)
-	// {
-	// 	printf("%d\n", B->x);
-	// 	B = B->next;
-	// }
-	
+	arr.a = 1;
+	arr.c = 0;
+	arr.number = malloc(f * sizeof(int));
+	while (arr.a < ac)
+	{
+		ft_isdigit(av[arr.a]);
+		afva = ft_split(av[arr.a], ' ');
+		put_error(afva);
+		arr.b = 0;
+		while (afva[arr.b])
+		{
+			check_op(afva[arr.b]);
+			b_number = ft_atoi(afva[arr.b]);
+			arr.number[arr.c] = check_int(b_number);
+			arr.c++;
+			arr.b++;
+		}
+		ft_free_arr(afva);
+		arr.a++;
+	}
+	put_in_stack(arr.number, arr.c, f);
 }
 
 int	lenght_array(char **av)
@@ -97,13 +92,14 @@ int	lenght_array(char **av)
 
 int	main(int ac, char **av)
 {
+	int	a;
+
 	if (ac > 1)
 	{
-		int	a;
-
 		a = lenght_array(av);
 		check_all(av, ac, a);
 	}
 	else
 		write(1, "error\n", 6);
+	return (0);
 }

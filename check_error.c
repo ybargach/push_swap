@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_error.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 18:55:34 by ybargach          #+#    #+#             */
+/*   Updated: 2023/04/17 18:55:34 by ybargach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	check_count(int count)
@@ -8,12 +20,22 @@ void	check_count(int count)
 	}
 }
 
-void	check_sort(int *res, int index)
+void	put_error(char **arr)
+{
+	if (arr[0] == NULL)
+	{
+		ft_free_arr(arr);
+		write(1, "error\n", 6);
+		exit(0);
+	}
+}
+
+void	check_sort(t_data res, int index)
 {
 	int	a;
 	int	b;
 	int	tmp;
-	int count;
+	int	count;
 
 	a = 0;
 	count = 0;
@@ -22,11 +44,11 @@ void	check_sort(int *res, int index)
 		b = a + 1;
 		while (b < index)
 		{
-			if (res[a] > res[b])
+			if (res.number[a] > res.number[b])
 			{
-				tmp = res[a];
-				res[a] = res[b];
-				res[b] = tmp;
+				tmp = res.number[a];
+				res.number[a] = res.number[b];
+				res.number[b] = tmp;
 				count++;
 			}
 			b++;
@@ -43,7 +65,7 @@ void	check_op(const char *str)
 	a = 0;
 	while (str[a])
 	{
-		if(str[a] == '+' || str[a] == '-')
+		if (str[a] == '+' || str[a] == '-')
 		{
 			if (!(str[a + 1] >= '0' && str[a + 1] <= '9'))
 			{
@@ -70,37 +92,12 @@ void	ft_isdigit(char *str)
 				exit(0);
 			}
 		}
-		if (!((str[a] >= '0' && str[a] <= '9') || str[a] == ' ' || str[a] == '+' || str[a] == '-'))
+		if (!((str[a] >= '0' && str[a] <= '9')
+				|| str[a] == ' ' || str[a] == '+' || str[a] == '-'))
 		{
 			write(1, "error\n", 6);
 			exit(0);
 		}
 		a++;
 	}
-}
-
-void	check_repeated(int *number, int i)
-{
-	int	a;
-	int b;
-	int count;
-
-	a = 0;
-	count = 0;
-	while (a < i)
-	{
-		b = a + 1;
-		while (b < i)
-		{
-			if (number[a] == number[b])
-				count++;
-			b++;
-		}
-		a++;
-	}
-	if (count != 0)
-		{
-			write(1, "error\n", 6);
-			exit(0);
-		}
 }

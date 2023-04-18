@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_stack_a.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 18:56:12 by ybargach          #+#    #+#             */
+/*   Updated: 2023/04/17 23:26:04 by ybargach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	stack_size(stack *elem)
+int	stack_size(t_stack *elem)
 {
 	int	a;
 
@@ -13,10 +25,10 @@ int	stack_size(stack *elem)
 	return (a);
 }
 
-void	push(stack **src, stack **dst)
+void	push(t_stack **src, t_stack **dst)
 {
-	stack	*tmp;
-	
+	t_stack	*tmp;
+
 	if (*src)
 	{
 		tmp = *src;
@@ -27,13 +39,13 @@ void	push(stack **src, stack **dst)
 	}
 }
 
-void	rra(stack **elem)
+void	rra(t_stack **elem)
 {
-	stack	*lastnode;
-	stack	*firstnode;
+	t_stack	*lastnode;
+	t_stack	*firstnode;
 
 	if ((*elem)->next == NULL)
-		return;
+		return ;
 	firstnode = *elem;
 	while (firstnode->next->next != NULL)
 		firstnode = firstnode->next;
@@ -44,10 +56,10 @@ void	rra(stack **elem)
 	write(1, "rra\n", 4);
 }
 
-void	ra(stack **data)
+void	ra(t_stack **data)
 {
-	stack	*tmp;
-	stack	*last;
+	t_stack	*tmp;
+	t_stack	*last;
 
 	if (stack_size(*data) < 2)
 		return ;
@@ -59,9 +71,9 @@ void	ra(stack **data)
 	write(1, "ra\n", 3);
 }
 
-void	sa(stack **elem)
+void	sa(t_stack **elem)
 {
-	stack	*tmp;
+	t_stack	*tmp;
 
 	tmp = (*elem)->next;
 	(*elem)->next = tmp->next;

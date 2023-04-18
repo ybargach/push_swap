@@ -1,29 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_to_stack.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 18:56:59 by ybargach          #+#    #+#             */
+/*   Updated: 2023/04/18 01:36:41 by ybargach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-stack	*create_node(int value)
+t_stack	*create_node(int value)
 {
-	stack	*newnode;
+	t_stack	*newnode;
 
-	newnode = malloc(sizeof(stack));
+	newnode = malloc(sizeof(t_stack));
 	newnode->x = value;
 	newnode->next = NULL;
 	return (newnode);
 }
 
-stack	*last_node(stack **elem)
+t_stack	*last_node(t_stack **elem)
 {
-	stack	*lastnode;
-	
+	t_stack	*lastnode;
+
 	lastnode = (*elem);
 	while (lastnode->next != NULL)
 		lastnode = lastnode->next;
 	return (lastnode);
 }
 
-void	add_back(stack **elem, int value)
+void	add_back(t_stack **elem, int value)
 {
-	stack	*new_node;
-	stack	*lastnode;
+	t_stack	*new_node;
+	t_stack	*lastnode;
 
 	if ((*elem) == NULL)
 		(*elem) = create_node(value);
@@ -32,31 +44,42 @@ void	add_back(stack **elem, int value)
 		new_node = create_node(value);
 		lastnode = last_node(elem);
 		lastnode->next = new_node;
-    }
+	}
 }
 
-void	add_first(stack **elem, int value)
+void	add_first(t_stack **elem, int value)
 {
-	stack	*firstnode;
-	
+	t_stack	*firstnode;
+
 	firstnode = create_node(value);
 	if (!firstnode)
-		return;
+		return ;
 	firstnode->next = *elem;
-	*elem =  firstnode;
+	*elem = firstnode;
 }
 
-void	free_node(stack **elem)
+void	free_node(t_stack **elem)
 {
-	stack	*free_node = NULL;
-	stack	*node;
+	t_stack	*free_node;
 
-	node = *elem;
-	while(node)
+	free_node = NULL;
+	while (*elem)
 	{
-		node = free_node;
-		node = node->next;
+		free_node = *elem;
+		*elem = (*elem)->next;
 		free(free_node);
 	}
-	*elem = NULL;
 }
+
+// void freeList(struct node* head)
+// {
+//    struct node* tmp;
+
+//    while (head != NULL)
+//     {
+//        tmp = head;
+//        head = head->next;
+//        free(tmp);
+//     }
+
+// }
