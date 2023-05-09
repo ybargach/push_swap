@@ -20,7 +20,7 @@ void	push_five_a_to_b(t_stack **elem, t_stack **node, t_data arr)
 	while (arr.b < arr.arr_size)
 	{
 		arr.new_arr_size = stack_size(*elem);
-		if (arr.new_arr_size == 3)
+		if (arr.new_arr_size <= 3)
 			break ;
 		min_number(elem, node, arr);
 		arr.b++;
