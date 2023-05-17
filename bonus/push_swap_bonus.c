@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 18:56:53 by ybargach          #+#    #+#             */
-/*   Updated: 2023/04/17 18:56:53 by ybargach         ###   ########.fr       */
+/*   Created: 2023/05/17 14:23:14 by ybargach          #+#    #+#             */
+/*   Updated: 2023/05/17 14:23:14 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	check_index(t_stack **A, t_stack **B, int index)
-{
-	if (index > 1 && index <= 3)
-		sort_three(A);
-	else if (index > 3 && index <= 5)
-		sort_five(A, B, index);
-	else if (index > 5 && index <= 200)
-		sort_one_hundred(A, B, index);
-	else if (index > 200)
-		sort_five_hundred(A, B, index);
-}
+#include "push_swap_bonus.h"
 
 void	put_in_stack(int *number, int c)
 {
@@ -39,8 +27,7 @@ void	put_in_stack(int *number, int c)
 		add_back(&a, number[g]);
 		g++;
 	}
-	free(number);
-	check_index(&a, &b, c);
+	main_checker(&a, &b);
 	free_node(&a);
 }
 

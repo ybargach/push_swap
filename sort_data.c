@@ -6,7 +6,7 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:57:07 by ybargach          #+#    #+#             */
-/*   Updated: 2023/04/18 01:57:48 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:10:15 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	sort_five(t_stack **elem, t_stack **node, int index)
 		a++;
 	}
 	check_sort(arr, index);
+	free(number);
 	push_five_a_to_b(elem, node, arr);
 }
 
@@ -68,6 +69,7 @@ void	sort_one_hundred(t_stack **elem, t_stack **node, int index)
 	check_sort(array, index);
 	chunk_array(elem, node, array);
 	push_b_to_a(elem, node, array);
+	free(number);
 }
 
 void	sort_five_hundred(t_stack **elem, t_stack **node, int index)
@@ -92,4 +94,5 @@ void	sort_five_hundred(t_stack **elem, t_stack **node, int index)
 	check_sort(array, index);
 	chunk_array(elem, node, array);
 	push_b_to_a(elem, node, array);
+	free(number);
 }

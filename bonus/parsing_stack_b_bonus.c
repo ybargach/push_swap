@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_stack_a.c                                  :+:      :+:    :+:   */
+/*   parsing_stack_b_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 18:56:12 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 21:11:04 by ybargach         ###   ########.fr       */
+/*   Created: 2023/04/17 18:56:30 by ybargach          #+#    #+#             */
+/*   Updated: 2023/05/17 21:07:52 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	stack_size(t_stack *elem)
-{
-	int	a;
-
-	a = 0;
-	while (elem)
-	{
-		a++;
-		elem = elem->next;
-	}
-	return (a);
-}
-
-void	push(t_stack **src, t_stack **dst)
+void	push_b(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 
@@ -35,11 +22,24 @@ void	push(t_stack **src, t_stack **dst)
 		*src = (*src)->next;
 		tmp->next = *dst;
 		*dst = tmp;
-		write(1, "pb\n", 3);
 	}
 }
 
-void	rra(t_stack **elem)
+void	rb(t_stack **data)
+{
+	t_stack	*tmp;
+	t_stack	*last;
+
+	if (stack_size(*data) < 2)
+		return ;
+	tmp = *data;
+	last = last_node(data);
+	last->next = *data;
+	*data = (*data)->next;
+	tmp->next = NULL;
+}
+
+void	rrb(t_stack **elem)
 {
 	t_stack	*lastnode;
 	t_stack	*firstnode;
@@ -53,25 +53,9 @@ void	rra(t_stack **elem)
 	firstnode->next = NULL;
 	lastnode->next = *elem;
 	*elem = lastnode;
-	write(1, "rra\n", 4);
 }
 
-void	ra(t_stack **data)
-{
-	t_stack	*tmp;
-	t_stack	*last;
-
-	if (stack_size(*data) < 2)
-		return ;
-	tmp = *data;
-	last = last_node(data);
-	last->next = *data;
-	*data = (*data)->next;
-	tmp->next = NULL;
-	write(1, "ra\n", 3);
-}
-
-void	sa(t_stack **elem)
+void	sb(t_stack **elem)
 {
 	t_stack	*tmp;
 
@@ -79,5 +63,10 @@ void	sa(t_stack **elem)
 	(*elem)->next = tmp->next;
 	tmp->next = (*elem);
 	(*elem) = tmp;
-	write(1, "sa\n", 3);
+}
+
+void	rrr(t_stack **a, t_stack **b)
+{
+	rrb(b);
+	rra(a);
 }

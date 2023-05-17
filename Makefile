@@ -6,7 +6,7 @@
 #    By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 18:56:23 by ybargach          #+#    #+#              #
-#    Updated: 2023/04/18 01:15:06 by ybargach         ###   ########.fr        #
+#    Updated: 2023/05/17 16:22:39 by ybargach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,25 +15,33 @@ SRC = check_error.c check_number.c function_utils.c \
 		parsing_stack_a.c parsing_stack_b.c push_to_stack.c \
 		sort_five.c sort_five_utils.c function_utils_2.c sort_data.c \
 
-OBJ =$(SRC:.c=.o)
-.SILENT:
+BONUS = bonus/check_error_bonus.c bonus/check_number_bonus.c bonus/function_utils_bonus.c \
+			bonus/function_bonus.c bonus/push_swap_bonus.c \
+			bonus/parsing_stack_a_bonus.c bonus/parsing_stack_b_bonus.c \
+			bonus/push_to_stack_bonus.c bonus/function_utils_2_bonus.c \
+			bonus/get_next_line.c bonus/get_next_line_utils.c bonus/check_sort_bonus.c \
+
+NAME = push_swap
+CHECKER = checker
+
+OBJ = $(SRC:.c=.o)
+OBJS = $(BONUS:.c=.o)
 
 CC = gcc
-CFLAGS = -o push_swap
+CFLAGS = -Wall -Wextra -Werror
 
-all: 
-	$(CC) $(CFLAGS) $(SRC)
-
-$(NAME): $(OBJ)
-	@ $(CC) $(OBJ) -o $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+bonus: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(CHECKER)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJS)
 
 fclean:
-	rm -f $(OBJ) $(NAME)
+	rm -f $(OBJ) $(NAME) $(CHECKER) $(OBJS)
 
 re: fclean all

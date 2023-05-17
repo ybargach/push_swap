@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_to_stack.c                                    :+:      :+:    :+:   */
+/*   push_to_stack_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:56:59 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 13:36:31 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:58:26 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 t_stack	*create_node(int value)
 {

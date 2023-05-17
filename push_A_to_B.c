@@ -6,7 +6,7 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:56:38 by ybargach          #+#    #+#             */
-/*   Updated: 2023/04/17 23:43:30 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/12 09:29:43 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	chunk_array(t_stack **elem, t_stack **node, t_data arr)
 	while (i < arr.arr_size)
 	{
 		j = i;
-		arr.mid_number = i + arr.chunk_size / 2;
 		while (j < (i + arr.chunk_size) && j < arr.arr_size)
 			j++;
 		arr.a++;
