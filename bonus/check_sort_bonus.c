@@ -6,11 +6,25 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:24:05 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 15:40:06 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:49:21 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	a;
+
+	a = 0;
+	while (s1[a] || s2[a])
+	{
+		if (!((unsigned char)s1[a] == (unsigned char)s2[a]))
+			return ((unsigned char)s1[a] - (unsigned char)s2[a]);
+		a++;
+	}
+	return (0);
+}
 
 int	check_sort_bonus(t_stack **a)
 {
@@ -43,27 +57,27 @@ void	checker_sort(t_stack **a, t_stack **b, t_data arr)
 
 int	checker_bonus(t_stack **a, t_stack **b, t_data arr)
 {
-	if (strcmp(arr.get, "sa\n") == 0)
+	if (ft_strcmp(arr.get, "sa\n") == 0)
 		sa(a);
-	else if (strcmp(arr.get, "ra\n") == 0)
+	else if (ft_strcmp(arr.get, "ra\n") == 0)
 		ra(a);
-	else if (strcmp(arr.get, "rra\n") == 0)
+	else if (ft_strcmp(arr.get, "rra\n") == 0)
 		rra(a);
-	else if (strcmp(arr.get, "sb\n") == 0)
+	else if (ft_strcmp(arr.get, "sb\n") == 0)
 		sb(b);
-	else if (strcmp(arr.get, "rb\n") == 0)
+	else if (ft_strcmp(arr.get, "rb\n") == 0)
 		rb(b);
-	else if (strcmp(arr.get, "rrb\n") == 0)
+	else if (ft_strcmp(arr.get, "rrb\n") == 0)
 		rrb(b);
-	else if (strcmp(arr.get, "rrr\n") == 0)
+	else if (ft_strcmp(arr.get, "rrr\n") == 0)
 		rrr(a, b);
-	else if (strcmp(arr.get, "ss\n") == 0)
+	else if (ft_strcmp(arr.get, "ss\n") == 0)
 		ss(a, b);
-	else if (strcmp(arr.get, "rr\n") == 0)
+	else if (ft_strcmp(arr.get, "rr\n") == 0)
 		rr(a, b);
-	else if (strcmp(arr.get, "pb\n") == 0)
+	else if (ft_strcmp(arr.get, "pb\n") == 0)
 		push(a, b);
-	else if (strcmp(arr.get, "pa\n") == 0)
+	else if (ft_strcmp(arr.get, "pa\n") == 0)
 		push_b(b, a);
 	else
 		return (1);
@@ -72,7 +86,7 @@ int	checker_bonus(t_stack **a, t_stack **b, t_data arr)
 
 void	main_checker(t_stack **a, t_stack **b)
 {
-	t_data arr;
+	t_data	arr;
 
 	arr.get = get_next_line(0);
 	arr.b = 0;

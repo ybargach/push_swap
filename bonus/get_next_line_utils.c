@@ -6,12 +6,11 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:10:43 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 14:23:51 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:53:04 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-#include "get_next_line.h"
 
 char	*ft_strchr(char *str, int c)
 {

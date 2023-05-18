@@ -6,7 +6,7 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:56:30 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 21:11:11 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:44:00 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	sb(t_stack **elem)
 {
 	t_stack	*tmp;
 
+	if ((*elem) == NULL)
+		return ;
 	tmp = (*elem)->next;
 	(*elem)->next = tmp->next;
 	tmp->next = (*elem);

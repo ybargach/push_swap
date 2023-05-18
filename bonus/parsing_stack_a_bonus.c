@@ -6,7 +6,7 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:56:12 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 21:10:10 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:37:43 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 
-	if ((*dst) == NULL)
-		return ;
 	if (*src)
 	{
 		tmp = *src;
@@ -74,6 +72,8 @@ void	sa(t_stack **elem)
 {
 	t_stack	*tmp;
 
+	if ((*elem) == NULL)
+		return ;
 	tmp = (*elem)->next;
 	(*elem)->next = tmp->next;
 	tmp->next = (*elem);

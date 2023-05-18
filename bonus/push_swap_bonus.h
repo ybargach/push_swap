@@ -20,6 +20,10 @@
 # include <fcntl.h>
 # include <limits.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
 typedef struct stack {
 	int				x;
 	struct stack	*next;
@@ -53,6 +57,7 @@ typedef struct data {
 
 //BONUS
 
+int		ft_strcmp(char *s1, char *s2);
 void	main_checker(t_stack **a, t_stack **b);
 int		checker_bonus(t_stack **a, t_stack **b, t_data arr);
 void	checker_sort(t_stack **a, t_stack **b, t_data arr);
@@ -112,8 +117,6 @@ void	ft_free_arr(char **arr);
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *str);
-int		ft_strlen(const char *str);
 char	*ft_read(char *stock, int fd);
 char	*ft_line(char *str);
 char	*ft_save(char *str);

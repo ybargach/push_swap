@@ -6,7 +6,7 @@
 /*   By: ybargach <ybargach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 18:55:58 by ybargach          #+#    #+#             */
-/*   Updated: 2023/05/17 14:39:15 by ybargach         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:39:38 by ybargach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 void	rr(t_stack **a, t_stack **b)
 {
-	if ((*a) == NULL || (*b) == NULL)
-		return ;
 	ra(a);
 	rb(b);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
-	if ((*a) == NULL || (*b) == NULL)
-		return ;
 	sa(a);
 	sb(b);
 }
